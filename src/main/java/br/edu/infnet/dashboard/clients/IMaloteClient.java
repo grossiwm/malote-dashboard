@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(url = "localhost:8080/api/malote", name = "maloteClient")
+@FeignClient(url = "${maloteapi.malote.root}/malote", name = "maloteClient")
 public interface IMaloteClient {
 
     @GetMapping(value = "/listar")
