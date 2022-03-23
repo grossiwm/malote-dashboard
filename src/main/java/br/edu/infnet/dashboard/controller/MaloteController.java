@@ -16,6 +16,6 @@ public class MaloteController {
 	public String obterLista(Model model) {
 		
 		model.addAttribute("listagem", maloteService.obterLista());
-		return "lista/pedidos";
+		return "lista/malotes";
 	}
 }

@@ -2,6 +2,7 @@ package br.edu.infnet.dashboard.controller;
 
 import java.util.List;
 
+import br.edu.infnet.dashboard.model.domain.Empresa;
 import br.edu.infnet.dashboard.model.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class DashboardController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+
+	@Autowired
+	private EmpresaService empresaService;
 
 	@Autowired
 	private MaloteService maloteService;
@@ -37,10 +41,9 @@ public class DashboardController {
 	@GetMapping(value = "/")
 	public String index(Model model) {
 
-		//transacoes e malotes por usuário
-		List<Usuario> usuarios = usuarioService.obterLista();		
-		model.addAttribute("malotesPorUsuario", usuarios);
-		model.addAttribute("transacoesPorUsuario", usuarios);
+		//transacoes e malotes por empresa
+		List<Empresa> empresas = empresaService.obterLista();
+		model.addAttribute("empresas", empresas);
 		
 		//quantidade de malotes
 		model.addAttribute("qtdeMalotes", maloteService.obterQuantidade());

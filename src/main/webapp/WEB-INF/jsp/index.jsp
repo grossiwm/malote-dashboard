@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +52,7 @@
 
 						  <c:if test="${not empty mensagem}">
 							<div class="alert alert-success">
-							  <strong>Confirma��o!</strong> ${mensagem}
+							  <strong>Confirmação!</strong> ${mensagem}
 							</div>	  
 						  </c:if>
 
@@ -72,8 +72,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Quantidade de Pedidos</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${qtdePedidos}</div>
+                                                Quantidade de Malotes</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${qtdeMalotes}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -90,8 +90,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Bebida</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorVendaBebida}</div>
+                                                Depósito</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorDepositos}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -108,8 +108,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Comida</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorVendaComida}</div>
+                                                Transferência</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorTransferencias}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -126,8 +126,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Sobremesa</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorVendaSobremesa}</div>
+                                                Pagamento</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">${valorPagamentos}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -147,12 +147,12 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pedidos</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Malotes</h6>
                                 </div>
                                 <div class="card-body">
-                                	<c:forEach var="pedidoUser" items="${pedidosPorUsuario}">
-                                    <h4 class="small font-weight-bold">${pedidoUser.nome} <span
-                                            class="float-right">${pedidoUser.pedidos.size()}</span></h4>
+                                	<c:forEach var="empresa" items="${empresas}">
+                                    <h4 class="small font-weight-bold">${empresa.nome} <span
+                                            class="float-right">${empresa.malotes.size()}</span></h4>
 <!--                                     <div class="progress mb-4"> -->
 <!--                                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%" -->
 <!--                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> -->
@@ -167,12 +167,12 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Produtos</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Transações</h6>
                                 </div>
                                 <div class="card-body">
-                                	<c:forEach var="produtoUser" items="${produtosPorUsuario}">
-                                    <h4 class="small font-weight-bold">${produtoUser.nome} <span
-                                            class="float-right">${produtoUser.produtos.size()}</span></h4>
+                                	<c:forEach var="empresa" items="${empresas}">
+                                    <h4 class="small font-weight-bold">${empresa.nome} <span
+                                            class="float-right">${empresa.transacoes.size()}</span></h4>
 <!--                                     <div class="progress"> -->
 <!--                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" -->
 <!--                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> -->

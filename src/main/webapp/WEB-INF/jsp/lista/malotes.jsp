@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +52,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Pedidos</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Malotes</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -60,26 +60,26 @@
                                     <thead>
                                         <tr>
                                             <th>Data</th>
-                                            <th>DescriÁ„o</th>
-                                            <th>Solicitante</th>
-                                            <th>Produtos</th>
+                                            <th>Empresa</th>
+                                            <th>Usu√°rio</th>
+                                            <th>Transa√ß√µes</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Data</th>
-                                            <th>DescriÁ„o</th>
-                                            <th>Solicitante</th>
-                                            <th>Produtos</th>
+                                            <th>Empresa</th>
+                                            <th>Usu√°rio</th>
+                                            <th>Transa√ß√µes</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    	<c:forEach var="p" items="${listagem}">
+                                    	<c:forEach var="m" items="${listagem}">
                                         <tr>
-                                            <td>${p.data}</td>
-                                            <td>${p.descricao}</td>
-                                            <td>${p.solicitante.nome}</td>
-                                            <td>${p.produtos.size()}</td>
+                                            <td>${m.data}</td>
+                                            <td>${m.empresa}</td>
+                                            <td>${p.usuario}</td>
+                                            <td>${m.transacoes.size()}</td>
                                         </tr>
                                         </c:forEach>
                                     </tbody>

@@ -4,7 +4,7 @@ import com.gabrielrossilopes.appmalote.model.enums.TipoTransacao;
 
 import java.math.BigDecimal;
 
-public abstract class Transacao {
+public class Transacao {
 
 	protected Long id;
 

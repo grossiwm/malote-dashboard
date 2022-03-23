@@ -15,6 +15,16 @@ public class Empresa {
 	
 	private List<Usuario> usuarios;
 
+	private List<Transacao> transacoes;
+
+	public List<Transacao> getTransacoes() {
+		return transacoes;
+	}
+
+	public void setTransacoes(List<Transacao> transacoes) {
+		this.transacoes = transacoes;
+	}
+
 	public int getQuantidadeMalotes() {
 		return quantidadeMalotes;
 	}
