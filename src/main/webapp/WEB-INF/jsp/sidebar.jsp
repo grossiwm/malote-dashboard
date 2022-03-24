@@ -40,7 +40,10 @@
                 <h6 class="collapse-header">Gestão:</h6>
                 <a class="collapse-item" href="/malotes">Malotes</a>
                 <a class="collapse-item" href="/transacoes">Transações</a>
-                <a class="collapse-item" href="/solicitantes">Solicitantes</a>
+                <a class="collapse-item" href="/depositos">Depósitos</a>
+                <a class="collapse-item" href="/transferencias">Transferências</a>
+                <a class="collapse-item" href="/pagamentos">Pagamentos</a>
+                <a class="collapse-item" href="/empresas">Empresas</a>
             </div>
         </div>
     </li>

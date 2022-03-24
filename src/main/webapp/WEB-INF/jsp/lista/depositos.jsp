@@ -52,34 +52,34 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Malotes</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Depósitos</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Data</th>
-                                            <th>Empresa</th>
-                                            <th>Usuário</th>
-                                            <th>Transações</th>
+                                            <th>Valor</th>
+                                            <th>CPF Beneficiário</th>
+                                            <th>Nome Beneficiário</th>
+                                            <th>Malote</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Data</th>
-                                            <th>Empresa</th>
-                                            <th>Usuário</th>
-                                            <th>Transações</th>
+                                            <th>Valor</th>
+                                            <th>CPF Beneficiário</th>
+                                            <th>Nome Beneficiário</th>
+                                            <th>Malote</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    	<c:forEach var="m" items="${listagem}">
+                                    	<c:forEach var="d" items="${listagem}">
                                         <tr>
-                                            <td>${m.data}</td>
-                                            <td>${m.empresa.nome}</td>
-                                            <td>${m.usuario.nome}</td>
-                                            <td>${m.quantidadeTransacoes}</td>
+                                            <td>${d.valor}</td>
+                                            <td>${d.cpfBeneficiario}</td>
+                                            <td>${d.nomeBeneficiario}</td>
+                                            <td>${d.malote.id}</td>
                                         </tr>
                                         </c:forEach>
                                     </tbody>

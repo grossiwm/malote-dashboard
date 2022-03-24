@@ -53,6 +53,12 @@ public class Malote {
 
 	private BigDecimal valorTotal;
 
+	private int quantidadeTransacoes;
+
+	public int getQuantidadeTransacoes() {
+		return quantidadeTransacoes;
+	}
+
 	public BigDecimal getValorTotal() {
 		return somaTransacoes();
 	}
