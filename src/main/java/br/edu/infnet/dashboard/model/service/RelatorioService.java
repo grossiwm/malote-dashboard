@@ -1,9 +1,6 @@
 package br.edu.infnet.dashboard.model.service;
 
-import br.edu.infnet.dashboard.model.domain.Empresa;
-import br.edu.infnet.dashboard.model.domain.Log;
-import br.edu.infnet.dashboard.model.domain.Malote;
-import br.edu.infnet.dashboard.model.domain.Transacao;
+import br.edu.infnet.dashboard.model.domain.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -24,10 +21,19 @@ public class RelatorioService {
     private TransacaoService transacaoService;
 
     @Autowired
+    private TransferenciaService transferenciaService;
+
+    @Autowired
     private MaloteService maloteService;
 
     @Autowired
     private EmpresaService empresaService;
+
+    @Autowired
+    private DepositoService depositoService;
+
+    @Autowired
+    private PagamentoService pagamentoService;
 
     @Autowired
     private LogService logService;
@@ -40,6 +46,9 @@ public class RelatorioService {
         gerarAbaTransacoes(workbook);
         gerarAbaMalotes(workbook);
         gerarAbaEmpresas(workbook);
+        gerarAbaTransferencias(workbook);
+        gerarAbaDepositos(workbook);
+        gerarAbaPagamentos(workbook);
 
         LocalDateTime hoje = LocalDateTime.now();
 
@@ -148,6 +157,86 @@ public class RelatorioService {
             row.createCell(1).setCellValue(malote.getEmpresa().getNome());
             row.createCell(2).setCellValue(malote.getUsuario().getNome());
             row.createCell(3).setCellValue(malote.getQuantidadeTransacoes());
+        }
+    }
+
+    private void gerarAbaTransferencias(Workbook workbook) {
+        Sheet abaTransacoes = workbook.createSheet("Transferências");
+
+        String[] transacaoColumns = {"Data", "Valor", "Conta Origem", "Conta Destino", "Malote"};
+
+        Row headerRow = abaTransacoes.createRow(0);
+
+        for(int i = 0; i < transacaoColumns.length; i++) {
+            headerRow.createCell(i).setCellValue(transacaoColumns[i]);
+        }
+
+        List<Transferencia> transacaos = transferenciaService.obterList();
+
+        int rowNum = 0;
+
+        for(Transferencia transacao : transacaos) {
+            Row row = abaTransacoes.createRow(++rowNum);
+            row.createCell(0).setCellValue(
+                    transacao.getMalote().getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+            );
+            row.createCell(1).setCellValue(transacao.getValor().floatValue());
+            row.createCell(2).setCellValue(transacao.getContaOrigem());
+            row.createCell(3).setCellValue(transacao.getContaDestino());
+            row.createCell(4).setCellValue(transacao.getMalote().getId());
+        }
+    }
+
+    private void gerarAbaDepositos(Workbook workbook) {
+        Sheet abaTransacoes = workbook.createSheet("Depósitos");
+
+        String[] transacaoColumns = {"Data", "Valor", "CPF Beneficiário", "Nome Beneficiário", "Malote"};
+
+        Row headerRow = abaTransacoes.createRow(0);
+
+        for(int i = 0; i < transacaoColumns.length; i++) {
+            headerRow.createCell(i).setCellValue(transacaoColumns[i]);
+        }
+
+        List<Deposito> transacaos = depositoService.obterLista();
+
+        int rowNum = 0;
+
+        for(Deposito transacao : transacaos) {
+            Row row = abaTransacoes.createRow(++rowNum);
+            row.createCell(0).setCellValue(
+                    transacao.getMalote().getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+            );
+            row.createCell(1).setCellValue(transacao.getValor().floatValue());
+            row.createCell(2).setCellValue(transacao.getCpfBeneficiario());
+            row.createCell(3).setCellValue(transacao.getNomeBeneficiario());
+            row.createCell(4).setCellValue(transacao.getMalote().getId());
+        }
+    }
+
+    private void gerarAbaPagamentos(Workbook workbook) {
+        Sheet abaTransacoes = workbook.createSheet("Pagamento");
+
+        String[] transacaoColumns = {"Data", "Valor", "CNPJ Recebedor", "Malote"};
+
+        Row headerRow = abaTransacoes.createRow(0);
+
+        for(int i = 0; i < transacaoColumns.length; i++) {
+            headerRow.createCell(i).setCellValue(transacaoColumns[i]);
+        }
+
+        List<Pagamento> transacaos = pagamentoService.obterLista();
+
+        int rowNum = 0;
+
+        for(Pagamento transacao : transacaos) {
+            Row row = abaTransacoes.createRow(++rowNum);
+            row.createCell(0).setCellValue(
+                    transacao.getMalote().getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+            );
+            row.createCell(1).setCellValue(transacao.getValor().floatValue());
+            row.createCell(2).setCellValue(transacao.getCnpjRecebedor());
+            row.createCell(4).setCellValue(transacao.getMalote().getId());
         }
     }
 }
